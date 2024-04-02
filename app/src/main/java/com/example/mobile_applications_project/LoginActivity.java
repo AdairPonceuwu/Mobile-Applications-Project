@@ -84,28 +84,33 @@ public class LoginActivity extends AppCompatActivity {
 
     private void LoginUsuario(String email, String pass) {
         mProgress.show();
-        mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    mProgress.dismiss();
-                    FirebaseUser mUser = mAuth.getCurrentUser();
-                    assert mUser != null;
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    Toast.makeText(LoginActivity.this, "Success Login", Toast.LENGTH_SHORT).show();
-                    finish();
-                }else{
-                    mProgress.dismiss();
-                    Toast.makeText(LoginActivity.this, "Deny Login", Toast.LENGTH_SHORT).show();
-                }
+        if (email.isEmpty() && pass.isEmpty()){
+            Toast.makeText(LoginActivity.this, "Llena los datos para iniciar sesion", Toast.LENGTH_SHORT).show();
+            mProgress.dismiss();
+        }else{
+            mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                mProgress.dismiss();
+                                FirebaseUser mUser = mAuth.getCurrentUser();
+                                assert mUser != null;
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                Toast.makeText(LoginActivity.this, "Success Login", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }else{
+                                mProgress.dismiss();
+                                Toast.makeText(LoginActivity.this, "Deny Login", Toast.LENGTH_SHORT).show();
+                            }
 
-            }
-        }) //Falla el registro de usuario
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(LoginActivity.this, " "+e.getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        }
+                    }) //Falla el registro de usuario
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(LoginActivity.this, " "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 }

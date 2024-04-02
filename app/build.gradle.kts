@@ -64,6 +64,7 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+
     //noinspection UseTomlInstead
     implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     //noinspection UseTomlInstead
