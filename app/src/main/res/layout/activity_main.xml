@@ -54,7 +54,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="Nombre"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
 
                 <TextView
                     android:id="@+id/textViewCorreo"
@@ -84,6 +85,29 @@
                     android:layout_marginTop="10dp"/>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnCerrarSesion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:backgroundTint="@color/purple_700"
+                        android:text="Cerrar Sesion" />
+
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
         <Button
@@ -95,29 +119,6 @@
             android:text="¡Juega ahora mismo!"/>
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
-            
-            <Button
-                android:id="@+id/btnCerrarSesion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:backgroundTint="@color/purple_700"
-                android:text="Cerrar Sesion"/>
-            
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

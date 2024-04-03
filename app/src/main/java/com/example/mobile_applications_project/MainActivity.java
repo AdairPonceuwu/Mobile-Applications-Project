@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mTextName;
     TextView mTextEmail;
     TextView mTextFecha;
+    TextView mTextIdentificador;
 
     Button mButtonOut;
     Button mButtonJugar;
@@ -64,8 +65,9 @@ public class MainActivity extends AppCompatActivity {
 
         // TEXTVIEW inicio
         mTextName=findViewById(R.id.textViewNombre);
-        mTextName=findViewById(R.id.textViewCorreo);
-        mTextName=findViewById(R.id.textViewFecha);
+        mTextEmail=findViewById(R.id.textViewCorreo);
+        mTextFecha=findViewById(R.id.textViewFecha);
+        mTextIdentificador=findViewById(R.id.textViewUid);
         // TEXTVIEW final
         mButtonJugar =findViewById(R.id.btnJugar);
         mButtonJugar.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 CerrarSesion();
             }
         });
+
+        UserInfo();
     }
 
     // Vemos los datos del usuario Logueado inicio
@@ -95,9 +99,15 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
                     String uidUsuario = ""+ds.child("Uid").getValue();
-                    String namelUsuario = ""+ds.child("Uid").getValue();
-                    String emailUsuario = ""+ds.child("Uid").getValue();
-                    String fechaUsuario = ""+ds.child("Uid").getValue();
+                    String namelUsuario = ""+ds.child("Nombre").getValue();
+                    String emailUsuario = ""+ds.child("Email").getValue();
+                    String fechaUsuario = ""+ds.child("Fecha Registro").getValue();
+
+                    mTextIdentificador.setText(uidUsuario);
+                    mTextName.setText(namelUsuario);
+                    mTextEmail.setText(emailUsuario);
+                    mTextFecha.setText(fechaUsuario);
+
                 }
             }
 
