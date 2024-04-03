@@ -122,14 +122,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-
         <Button
             android:id="@+id/btnJugar"
             android:layout_width="wrap_content"
@@ -138,14 +130,44 @@
             android:backgroundTint="@color/teal_700"
             android:text="¡Juega ahora mismo!"/>
 
-        <Button
-            android:id="@+id/btnCerrarSesion"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:backgroundTint="@color/purple_700"
-            android:text="Cerrar Sesion" />
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnEditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/purple_500"
+                android:text="Editar" />
+
+            <Button
+                android:id="@+id/btnCerrarSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/purple_700"
+                android:text="Cerrar Sesion" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
+
+
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

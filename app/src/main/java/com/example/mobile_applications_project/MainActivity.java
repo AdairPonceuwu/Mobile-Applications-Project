@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button mButtonOut;
     Button mButtonJugar;
+    Button mButtonUpdate;
 
 
     @Override
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         mTextFecha=findViewById(R.id.textViewFecha);
         mTextIdentificador=findViewById(R.id.textViewUid);
         // TEXTVIEW final
+        mButtonUpdate=findViewById(R.id.btnEditar);
         mButtonJugar =findViewById(R.id.btnJugar);
         mButtonJugar.setOnClickListener(new View.OnClickListener() {
             @Override
