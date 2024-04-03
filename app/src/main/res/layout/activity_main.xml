@@ -58,6 +58,15 @@
                     android:layout_marginTop="10dp"/>
 
                 <TextView
+                    android:id="@+id/textViewFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="Fecha de Registro"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
                     android:id="@+id/textViewPuntaje"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
