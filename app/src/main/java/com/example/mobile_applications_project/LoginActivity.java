@@ -76,10 +76,49 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = mLoginEmail.getText().toString();
                 String pass = mLoginPassword.getText().toString();
-                LoginUsuario(email,pass);
+                // LoginUsuario(email,pass);
+                login();
             }
         });
 
+    }
+
+    private void login() {
+        String email = mLoginEmail.getText().toString();
+        String password = mLoginPassword.getText().toString();
+
+        if(!email.isEmpty() && !password.isEmpty()){
+            if(password.length() >= 6){
+                mProgress.show();
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    mProgress.dismiss();
+                                    FirebaseUser mUser = mAuth.getCurrentUser();
+                                    assert mUser != null;
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    Toast.makeText(LoginActivity.this, "Has ingresado correctamente", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }else{
+                                    mProgress.dismiss();
+                                    Toast.makeText(LoginActivity.this, "No se pudo validar al usuario", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        }) //Falla el registro de usuario
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(LoginActivity.this, " "+e.getMessage(),Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }else{
+                Toast.makeText(LoginActivity.this, " La contraseña y el email son obligatorios",Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(LoginActivity.this, " La contraseña y el email son obligatorios",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void LoginUsuario(String email, String pass) {
@@ -96,11 +135,11 @@ public class LoginActivity extends AppCompatActivity {
                                 FirebaseUser mUser = mAuth.getCurrentUser();
                                 assert mUser != null;
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                Toast.makeText(LoginActivity.this, "Success Login", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Has ingresado correctamente", Toast.LENGTH_SHORT).show();
                                 finish();
                             }else{
                                 mProgress.dismiss();
-                                Toast.makeText(LoginActivity.this, "Deny Login", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "No se pudo validar al usuario", Toast.LENGTH_SHORT).show();
                             }
 
                         }
