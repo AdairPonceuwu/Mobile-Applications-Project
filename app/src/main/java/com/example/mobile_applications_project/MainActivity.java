@@ -98,10 +98,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    String uidUsuario = "id: "+ds.child("Uid").getValue();
-                    String namelUsuario = "Nombre: "+ds.child("Nombre").getValue();
-                    String emailUsuario = "Correo: "+ds.child("Email").getValue();
-                    String fechaUsuario = " Fecha Registro: "+ds.child("Fecha Registro").getValue();
+                    String uidUsuario = "" + ds.child("Uid").getValue();
+                    String namelUsuario = "" + ds.child("Nombre").getValue();
+                    String emailUsuario = "" + ds.child("Email").getValue();
+                    String fechaUsuario = "" + ds.child("Fecha Registro").getValue();
 
                     mTextIdentificador.setText(uidUsuario);
                     mTextName.setText(namelUsuario);

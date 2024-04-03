@@ -29,8 +29,8 @@
             android:orientation="horizontal">
             
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:src="@drawable/principal"
                 android:layout_marginTop="15dp"/>
 
@@ -39,6 +39,15 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Identificador:"
+                    android:maxLines="1"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"/>
 
                 <TextView
                     android:id="@+id/textViewUid"
@@ -50,11 +59,26 @@
                     android:textStyle="bold"/>
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Nombre:"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
+                <TextView
                     android:id="@+id/textViewNombre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:text="Nombre"
+                    android:textSize="14sp"
+                    android:text="Nombre:"
+                    android:textStyle="bold"
+                    android:layout_marginTop="3dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Email:"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
@@ -62,8 +86,16 @@
                     android:id="@+id/textViewCorreo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:text="Email"
+                    android:textStyle="bold"
+                    android:layout_marginTop="3dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="Fecha de Registro:"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
@@ -71,10 +103,10 @@
                     android:id="@+id/textViewFecha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:text="Fecha de Registro"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="3dp"/>
 
                 <TextView
                     android:id="@+id/textViewPuntaje"
