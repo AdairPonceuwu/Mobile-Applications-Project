@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                     mTextEmail.setError("Correo Invalido");
                     mTextEmail.setFocusable(true);
                     //Validar la contraseña
-                }else if(mTextPassword.length()>6){
+                }else if(mTextPassword.length()<6){
                     mTextPassword.setError("Su contraseña debe de tener al menos 6 caracteres");
                     mTextEmail.setFocusable(true);
                 } else{
