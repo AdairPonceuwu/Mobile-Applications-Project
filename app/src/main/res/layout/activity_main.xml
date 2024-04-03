@@ -44,8 +44,9 @@
                     android:id="@+id/textViewUid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="10sp"
                     android:text="Identificador"
+                    android:maxLines="1"
                     android:textStyle="bold"/>
 
                 <TextView

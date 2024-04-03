@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    String uidUsuario = ""+ds.child("Uid").getValue();
+                    String uidUsuario = "id: "+ds.child("Uid").getValue();
                     String namelUsuario = ""+ds.child("Nombre").getValue();
                     String emailUsuario = ""+ds.child("Email").getValue();
                     String fechaUsuario = ""+ds.child("Fecha Registro").getValue();
