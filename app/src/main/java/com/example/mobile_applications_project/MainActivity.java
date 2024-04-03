@@ -89,7 +89,10 @@ public class MainActivity extends AppCompatActivity {
         mButtonJugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this,"Boton Jugar",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"Sumas faciles",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, Nivel1_Sumas_Faciles.class);
+                startActivity(intent);
+                finish();
             }
         });
 
