@@ -93,29 +93,34 @@ public class MainActivity extends AppCompatActivity {
 
     // Vemos los datos del usuario Logueado inicio
     private void UserInfo(){
-        Query query = databaseReference.orderByChild("Email").equalTo(mUser.getEmail());
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()){
-                    String uidUsuario = "" + ds.child("Uid").getValue();
-                    String nameUsuario = "" + ds.child("Nombre").getValue();
-                    String emailUsuario = "" + ds.child("Email").getValue();
-                    String fechaUsuario = "" + ds.child("Fecha Registro").getValue();
+        if (mUser != null){
+            Query query = databaseReference.orderByChild("Email").equalTo(mUser.getEmail());
+            query.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()){
+                        String uidUsuario = "" + ds.child("Uid").getValue();
+                        String nameUsuario = "" + ds.child("Nombre").getValue();
+                        String emailUsuario = "" + ds.child("Email").getValue();
+                        String fechaUsuario = "" + ds.child("Fecha Registro").getValue();
 
-                    mTextIdentificador.setText(uidUsuario);
-                    mTextName.setText(nameUsuario);
-                    mTextEmail.setText(emailUsuario);
-                    mTextFecha.setText(fechaUsuario);
+                        mTextIdentificador.setText(uidUsuario);
+                        mTextName.setText(nameUsuario);
+                        mTextEmail.setText(emailUsuario);
+                        mTextFecha.setText(fechaUsuario);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
                 }
-            }
+            });
+        }else{
+            Toast.makeText(MainActivity.this,"Bienvenid@ a nuestro juego",Toast.LENGTH_SHORT).show();
+        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 
 

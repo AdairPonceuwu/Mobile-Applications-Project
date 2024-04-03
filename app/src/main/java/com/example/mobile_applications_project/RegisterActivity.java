@@ -107,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
                     mTextPassword.setError("Su contraseña debe de tener al menos 6 caracteres");
                     mTextEmail.setFocusable(true);
                 } else{
-                    RegistrarJugador(email,pass);
+                    ClickRegister();
                 }
 
 
@@ -118,7 +118,23 @@ public class RegisterActivity extends AppCompatActivity {
         mProgress.setCancelable(false);
     }
 
-    private void RegistrarJugador(String email, String pass) {
+    private void ClickRegister() {
+        final String name = mTextName.getText().toString();
+        final String email = mTextEmail.getText().toString();
+        final String password = mTextPassword.getText().toString();
+
+        if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty()){
+            if(password.length() >= 6){
+                RegistrarJugador(name,email, password);
+            }else{
+                Toast.makeText(RegisterActivity.this, "La contraseña debe ser mayor o igual a 6 caracteres",Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(RegisterActivity.this, "Complete todos los campos",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void RegistrarJugador(String name,String email, String pass) {
         mProgress.show();
         mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
