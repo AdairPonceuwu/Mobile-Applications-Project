@@ -9,13 +9,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 public class Nivel1_Sumas_Faciles extends AppCompatActivity {
 
+    // Declaro xml inicio
     ImageView imagenVidas;
     TextView nombreJugador;
     TextView puntajeJugador;
@@ -24,7 +35,12 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
     ImageView imagenDerecha;
     EditText textoDeRespuesta;
     Button mButtonRespuesta;
+    // Declaro xml final
 
+    FirebaseUser mUser;
+    FirebaseAuth mAuth;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +53,13 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
             return insets;
         });
 
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("Datos de mi juego");
 
+
+        // instancio el xml inicio
         imagenVidas = findViewById(R.id.imageVidas);
         nombreJugador = findViewById(R.id.textViewUsuario);
         puntajeJugador = findViewById(R.id.textViewPuntos);
@@ -46,7 +68,7 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
         imagenSigno = findViewById(R.id.imageViewSigno);
         textoDeRespuesta = findViewById(R.id.editTextResponder);
         mButtonRespuesta = findViewById(R.id.btnRespuesta);
-
+        // instancio xml final
         mButtonRespuesta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,8 +76,34 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
             }
         });
 
+        informacionDelJugador();
+
     }
 
+    // Obteniendo nombre del jugador inicio
+    private void informacionDelJugador(){
+        if (mUser != null){
+            Query query = databaseReference.orderByChild("Email").equalTo(mUser.getEmail());
+            query.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()){
+                        String uidUsuario = "" + ds.child("Uid").getValue();
+                        String nameUsuario = "" + ds.child("Nombre").getValue();
+                        nombreJugador.setText(nameUsuario);
 
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }else{
+            Toast.makeText(Nivel1_Sumas_Faciles.this,"",Toast.LENGTH_SHORT).show();
+        }
+    }
+    // Obteniendo nombre del jugador final
 
 }
