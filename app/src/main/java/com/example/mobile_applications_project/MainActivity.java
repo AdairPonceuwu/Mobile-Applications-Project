@@ -244,15 +244,16 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Online", Toast.LENGTH_SHORT).show();
         }else{
             startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+            finish();
 
         }
     }
     //Metodo que comprueba si un usuario a iniciado sesion
 
-    @SuppressLint("MissingSuperCall")
+
     @Override
     public void onBackPressed() {
-
+        super.onBackPressed();
     }
 
 

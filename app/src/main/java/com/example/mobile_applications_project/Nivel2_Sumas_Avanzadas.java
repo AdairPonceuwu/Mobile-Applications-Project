@@ -87,6 +87,27 @@ public class Nivel2_Sumas_Avanzadas extends AppCompatActivity {
         textoDeRespuesta = findViewById(R.id.editTextResponder);
         mButtonRespuesta = findViewById(R.id.btnRespuesta);
         // instancio xml final
+        // pasar los strings extra de las vidas y el puntaje inicio/////////////////////
+        // puntaje inicio
+        string_score = getIntent().getStringExtra("score");
+        score = Integer.parseInt(string_score);
+        puntajeJugador.setText(" " + score);
+        // puntaje final
+
+        // vidas inicio
+        string_vidas = getIntent().getStringExtra("vidas");
+        vidas = Integer.parseInt(string_vidas);
+        if(vidas == 3){
+            imagenVidas.setImageResource(R.drawable.vida3);
+        }if(vidas == 2){
+            imagenVidas.setImageResource(R.drawable.vida2);
+        }if(vidas == 1){
+            imagenVidas.setImageResource(R.drawable.vida1);
+        }
+        //vidas final
+
+
+        // pasar los strings extra de las vidas y el puntaje final//////////////////////
 
 
         informacionDelJugador();
@@ -166,13 +187,11 @@ public class Nivel2_Sumas_Avanzadas extends AppCompatActivity {
     }
 
     private void NumAleatorio() {
-        if(score <= 9){
+        if(score <= 19){
             numAleatorio_uno = (int) (Math.random() * 10);
             numAleatorio_dos =  (int) (Math.random() * 10);
 
             resultado = numAleatorio_uno + numAleatorio_dos;
-
-            if (resultado <= 10){
                 for(int i =0;i< numero.length;i++){
                     int id = getResources().getIdentifier(numero[i],"drawable",getPackageName());
                     if(numAleatorio_uno == i){
@@ -181,12 +200,10 @@ public class Nivel2_Sumas_Avanzadas extends AppCompatActivity {
                         imagenDerecha.setImageResource(id);
                     }
                 }
-            }else{
-                NumAleatorio();
-            }
+
         }
         else{
-            Intent intent = new Intent(this, Nivel2_Sumas_Avanzadas.class);
+            Intent intent = new Intent(this, Nivel3_Restas.class);
             string_score = String.valueOf(score);
             string_vidas = String.valueOf(vidas);
             intent.putExtra("score",string_score);
@@ -230,6 +247,6 @@ public class Nivel2_Sumas_Avanzadas extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+
     }
 }

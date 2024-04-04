@@ -179,9 +179,9 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
                 }
             }else{
                 NumAleatorio();
+
             }
-        }
-        else{
+        }else{
             Intent intent = new Intent(this, Nivel2_Sumas_Avanzadas.class);
             string_score = String.valueOf(score);
             string_vidas = String.valueOf(vidas);
@@ -226,6 +226,6 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+
     }
 }
