@@ -1,10 +1,12 @@
 package com.example.mobile_applications_project;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +46,13 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
         imagenSigno = findViewById(R.id.imageViewSigno);
         textoDeRespuesta = findViewById(R.id.editTextResponder);
         mButtonRespuesta = findViewById(R.id.btnRespuesta);
+
+        mButtonRespuesta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Nivel1_Sumas_Faciles.this,"Botón funcionando",Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }
