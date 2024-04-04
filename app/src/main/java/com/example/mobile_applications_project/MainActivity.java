@@ -3,6 +3,8 @@ package com.example.mobile_applications_project;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     TextView mTextEmail;
     TextView mTextFecha;
     TextView mTextIdentificador;
+    TextView mTextViewPuntaje;
+
 
     Button mButtonOut;
     Button mButtonJugar;
@@ -76,8 +80,26 @@ public class MainActivity extends AppCompatActivity {
         mTextEmail=findViewById(R.id.textViewCorreo);
         mTextFecha=findViewById(R.id.textViewFecha);
         mTextIdentificador=findViewById(R.id.textViewUid);
-
+        mTextViewPuntaje = findViewById(R.id.textViewPuntaje);
         // TEXTVIEW final
+
+        // Aqui declaramos en el textview puntaje el score del jugador
+        AdminSQLiteOpenHelper adminSQLiteOpenHelper = new AdminSQLiteOpenHelper(this,"BD",null,1);
+        SQLiteDatabase BD = adminSQLiteOpenHelper.getWritableDatabase();
+
+        Cursor consulta = BD.rawQuery("select * from puntaje where score = (select max(score) from puntaje)",null);
+        if(consulta.moveToFirst()){
+            String temp_nombre = consulta.getString(0);
+            String temp_score = consulta.getString(1);
+            mTextViewPuntaje.setText("Puntaje Maximo: " + temp_score);
+            BD.close();
+        }else{
+            BD.close();
+        }
+
+
+
+
         mButtonUpdate=findViewById(R.id.btnEditar);
         mButtonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override

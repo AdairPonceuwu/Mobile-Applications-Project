@@ -86,6 +86,7 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
 
 
         informacionDelJugador();
+        NumAleatorio();
 
     }
 
@@ -117,7 +118,7 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
 
 
     // Logistica del juego inicio
-    public void Comparar(){
+    public void Comparar(View view){
         String respuesta = textoDeRespuesta.getText().toString();
         if (!respuesta.equals("")){
             int respuesta_jugador = Integer.parseInt(respuesta);
@@ -221,4 +222,8 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
     // Logistica del juego final
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
