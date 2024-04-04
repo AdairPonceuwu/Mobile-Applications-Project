@@ -1,6 +1,8 @@
 package com.example.mobile_applications_project;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +20,8 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
     ImageView imagenIzquierda;
     ImageView imagenSigno;
     ImageView imagenDerecha;
+    EditText textoDeRespuesta;
+    Button mButtonRespuesta;
 
 
     @Override
@@ -38,6 +42,8 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
         imagenIzquierda = findViewById(R.id.imageViewNumeroUno);
         imagenDerecha = findViewById(R.id.imageViewNumeroDos);
         imagenSigno = findViewById(R.id.imageViewSigno);
+        textoDeRespuesta = findViewById(R.id.editTextResponder);
+        mButtonRespuesta = findViewById(R.id.btnRespuesta);
 
     }
 }
