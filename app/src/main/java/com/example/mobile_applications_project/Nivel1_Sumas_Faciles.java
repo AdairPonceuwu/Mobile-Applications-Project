@@ -26,6 +26,15 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Nivel1_Sumas_Faciles extends AppCompatActivity {
 
+    // Declaramos las variantes de las funcionalidades del juego inicio
+    int score, numAleatorio_uno,numAleatorio_dos,vidas = 3;
+    String nombre_jugador;
+    String string_score;
+    String string_vidas;
+    String numero[] = {"cero","uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve"};
+
+    // Declaramos las variantes de las funcionalidades del juego final
+
     // Declaro xml inicio
     ImageView imagenVidas;
     TextView nombreJugador;
