@@ -1,5 +1,6 @@
 package com.example.mobile_applications_project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -114,5 +115,56 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
         }
     }
     // Obteniendo nombre del jugador final
+
+
+    // Logistica del juego inicio
+    public void Comparar(){
+        String respuesta = textoDeRespuesta.getText().toString();
+        if (!respuesta.equals("")){
+            int respuesta_jugador = Integer.parseInt(respuesta);
+            if(resultado == respuesta_jugador){
+                scrore++;
+                puntajeJugador.setText(""+score);
+                textoDeRespuesta.setText("");
+                BaseDeDatos();
+            }else{
+                vidas--;
+                BaseDeDatos();
+                switch (vidas){
+                    case 3:
+                        imagenVidas.setImageResource(R.drawable.vida3);
+                       break;
+
+                    case 2:
+                        Toast.makeText(Nivel1_Sumas_Faciles.this, "Te quedan dos vidas", Toast.LENGTH_SHORT).show();
+                        imagenVidas.setImageResource(R.drawable.vida2);
+                        break;
+
+                    case 1:
+                        Toast.makeText(Nivel1_Sumas_Faciles.this, "Te quedan una vida", Toast.LENGTH_SHORT).show();
+                        imagenVidas.setImageResource(R.drawable.vida1);
+                        break;
+                    case 0:
+                        Toast.makeText(Nivel1_Sumas_Faciles.this, "Has perdido todas tus vidas", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
+                }
+                textoDeRespuesta.setText("");
+            }
+            NumAleatorio();
+        }else{
+            Toast.makeText(Nivel1_Sumas_Faciles.this, "Debes escribir una respuesta", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void NumAleatorio() {
+    }
+
+    private void BaseDeDatos() {
+    }
+    // Logistica del juego final
+
 
 }
