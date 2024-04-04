@@ -16,6 +16,7 @@
         tools:targetApi="31">
         <activity
             android:name=".Nivel1_Sumas_Faciles"
+            android:label="Sumas fáciles"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -32,7 +33,7 @@
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:exported="true"></activity>
+            android:exported="true"/>
     </application>
 
 </manifest>
