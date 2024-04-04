@@ -29,7 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class Nivel1_Sumas_Faciles extends AppCompatActivity {
+public class Nivel2_Sumas_Avanzadas extends AppCompatActivity {
+
 
     // Declaramos las variantes de las funcionalidades del juego inicio
     int score, numAleatorio_uno,numAleatorio_dos,resultado,vidas = 3;
@@ -56,18 +57,19 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_nivel1_sumas_faciles);
+        setContentView(R.layout.activity_nivel2_sumas_avanzadas);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        Toast.makeText(this, "Empecemos a sumar", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Sumas un poco más avanzadas", Toast.LENGTH_SHORT).show();
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
@@ -90,7 +92,9 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
         informacionDelJugador();
         NumAleatorio();
 
+
     }
+
 
     // Obteniendo nombre del jugador inicio
     private void informacionDelJugador(){
@@ -113,7 +117,7 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
                 }
             });
         }else{
-            Toast.makeText(Nivel1_Sumas_Faciles.this,"",Toast.LENGTH_SHORT).show();
+            Toast.makeText(Nivel2_Sumas_Avanzadas.this,"",Toast.LENGTH_SHORT).show();
         }
     }
     // Obteniendo nombre del jugador final
@@ -135,19 +139,19 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
                 switch (vidas){
                     case 3:
                         imagenVidas.setImageResource(R.drawable.vida3);
-                       break;
+                        break;
 
                     case 2:
-                        Toast.makeText(Nivel1_Sumas_Faciles.this, "Te quedan dos vidas", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Nivel2_Sumas_Avanzadas.this, "Te quedan dos vidas", Toast.LENGTH_SHORT).show();
                         imagenVidas.setImageResource(R.drawable.vida2);
                         break;
 
                     case 1:
-                        Toast.makeText(Nivel1_Sumas_Faciles.this, "Te quedan una vida", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Nivel2_Sumas_Avanzadas.this, "Te quedan una vida", Toast.LENGTH_SHORT).show();
                         imagenVidas.setImageResource(R.drawable.vida1);
                         break;
                     case 0:
-                        Toast.makeText(Nivel1_Sumas_Faciles.this, "Has perdido todas tus vidas", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Nivel2_Sumas_Avanzadas.this, "Has perdido todas tus vidas", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(this, MainActivity.class);
                         startActivity(intent);
                         finish();
@@ -157,7 +161,7 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
             }
             NumAleatorio();
         }else{
-            Toast.makeText(Nivel1_Sumas_Faciles.this, "Debes escribir una respuesta", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Nivel2_Sumas_Avanzadas.this, "Debes escribir una respuesta", Toast.LENGTH_SHORT).show();
         }
     }
 
