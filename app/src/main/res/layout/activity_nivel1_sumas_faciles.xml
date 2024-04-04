@@ -30,11 +30,11 @@
                 android:layout_marginTop="15dp"/>
 
             <ImageView
+                android:id="@+id/imageVidas"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:textSize="18sp"
-                android:src="@drawable/vida3"
-                style="bold"/>
+                android:src="@drawable/vida3" />
 
         </LinearLayout>
 
@@ -58,6 +58,7 @@
                 android:layout_marginRight="7dp"/>
 
             <TextView
+                android:id="@+id/textViewUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Usuario"
@@ -87,6 +88,7 @@
                 android:layout_marginRight="7dp"/>
 
             <TextView
+                android:id="@+id/textViewPuntos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Puntos"
@@ -115,16 +117,19 @@
             android:gravity="center">
 
             <ImageView
+                android:id="@+id/imageViewNumeroUno"
                 android:layout_width="120dp"
                 android:layout_height="150dp"
                 android:src="@drawable/cinco"
                 android:layout_marginRight="5dp"/>
             <ImageView
+                android:id="@+id/imageViewSigno"
                 android:layout_width="120dp"
                 android:layout_height="150dp"
                 android:src="@drawable/suma"
                 android:layout_marginRight="5dp"/>
             <ImageView
+                android:id="@+id/imageViewNumeroDos"
                 android:layout_width="120dp"
                 android:layout_height="150dp"
                 android:src="@drawable/siete"
@@ -134,18 +139,39 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Respuesta:"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-        <EditText
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:hint="Responder"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Escribe tu respuesta:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+            <EditText
+                android:id="@+id/editTextResponder"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:hint="Aquí"
+                android:gravity="center"/>
+
+            <Button
+                android:id="@+id/btnRespuesta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Responder"
+                android:backgroundTint="#36196A"/>
+
+
+
+        </LinearLayout>
+
+
+
 
     </LinearLayout>
 
