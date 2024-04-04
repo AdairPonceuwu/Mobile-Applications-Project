@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Nivel1_Sumas_Faciles extends AppCompatActivity {
 
     // Declaramos las variantes de las funcionalidades del juego inicio
-    int score, numAleatorio_uno,numAleatorio_dos,vidas = 3;
+    int score, numAleatorio_uno,numAleatorio_dos,resultado,vidas = 3;
     String nombre_jugador;
     String string_score;
     String string_vidas;
@@ -79,12 +79,7 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
         textoDeRespuesta = findViewById(R.id.editTextResponder);
         mButtonRespuesta = findViewById(R.id.btnRespuesta);
         // instancio xml final
-        mButtonRespuesta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Nivel1_Sumas_Faciles.this,"Botón funcionando",Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
         informacionDelJugador();
 
@@ -123,7 +118,7 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
         if (!respuesta.equals("")){
             int respuesta_jugador = Integer.parseInt(respuesta);
             if(resultado == respuesta_jugador){
-                scrore++;
+                score++;
                 puntajeJugador.setText(""+score);
                 textoDeRespuesta.setText("");
                 BaseDeDatos();
@@ -160,6 +155,35 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
     }
 
     private void NumAleatorio() {
+        if(score <= 9){
+            numAleatorio_uno = (int) (Math.random() * 10);
+            numAleatorio_dos =  (int) (Math.random() * 10);
+
+            resultado = numAleatorio_uno + numAleatorio_dos;
+
+            if (resultado <= 10){
+                for(int i =0;i< numero.length;i++){
+                    int id = getResources().getIdentifier(numero[i],"drawable",getPackageName());
+                    if(numAleatorio_uno == i){
+                        imagenIzquierda.setImageResource(id);
+                    }if(numAleatorio_dos == i){
+                        imagenDerecha.setImageResource(id);
+                    }
+                }
+            }else{
+                NumAleatorio();
+            }
+        }
+        else{
+            Intent intent = new Intent(this, Nivel1_Sumas_Faciles.class);
+            string_score = String.valueOf(score);
+            string_vidas = String.valueOf(vidas);
+            intent.putExtra("score",string_score);
+            intent.putExtra("vidas",string_vidas);
+
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void BaseDeDatos() {
