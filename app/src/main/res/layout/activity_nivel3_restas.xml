@@ -8,14 +8,191 @@
     android:fitsSystemWindows="true"
     tools:context=".Nivel3_Restas">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NIVEL SUMAS SUPERADO"
-        tools:layout_editor_absoluteX="123dp"
-        android:layout_gravity="center"
-        android:textSize="25sp"
-        android:textColor="#5A00FA"
-        tools:layout_editor_absoluteY="347dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1F2D6F">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vidas Restantes:"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"/>
+
+                <ImageView
+                    android:id="@+id/imageVidas"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:textSize="18sp"
+                    android:src="@drawable/vida3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="3dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_person_game"
+                    android:layout_marginRight="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre:"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="7dp"/>
+
+                <TextView
+                    android:id="@+id/textViewUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Usuario"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="italic"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="3dp"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_puntos"
+                    android:layout_marginRight="7dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Puntuacion:"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="7dp"/>
+
+                <TextView
+                    android:id="@+id/textViewPuntos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="italic"/>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageViewNumeroUno"
+                    android:layout_width="120dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/cinco"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:id="@+id/imageViewSigno"
+                    android:layout_width="120dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/resta"
+                    android:layout_marginRight="5dp"/>
+                <ImageView
+                    android:id="@+id/imageViewNumeroDos"
+                    android:layout_width="120dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/siete"
+                    android:layout_marginRight="5dp"/>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Escribe tu respuesta:"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+                <EditText
+                    android:id="@+id/editTextResponder"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Aquí"
+                    android:gravity="center"
+                    android:inputType="number"/>
+
+                <Button
+                    android:id="@+id/btnRespuesta"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#36196A"
+                    android:onClick="Comparar"
+                    android:text="Responder"
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
