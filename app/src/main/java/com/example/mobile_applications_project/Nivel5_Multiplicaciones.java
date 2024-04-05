@@ -201,7 +201,7 @@ public class Nivel5_Multiplicaciones extends AppCompatActivity {
 
         }
         else{
-            Intent intent = new Intent(this, Nivel5_Multiplicaciones.class);
+            Intent intent = new Intent(this, Nivel6_Operaciones_Aleatorias.class);
             string_score = String.valueOf(score);
             string_vidas = String.valueOf(vidas);
             intent.putExtra("score",string_score);
