@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MobileApplicationsProject"
         tools:targetApi="31">
         <activity
+            android:name=".Nivel5_Multiplicaciones"
+            android:exported="false" />
+        <activity
             android:name=".Nivel4_Sumas_y_Restas"
             android:exported="false" />
         <activity
