@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MobileApplicationsProject"
         tools:targetApi="31">
         <activity
+            android:name=".JuegoAleatorio"
+            android:exported="false" />
+        <activity
             android:name=".Nivel6_Operaciones_Aleatorias"
             android:exported="false" />
         <activity

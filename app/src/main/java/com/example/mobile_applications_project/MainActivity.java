@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button mButtonOut;
     Button mButtonJugar;
+    Button mButtonJugarCarrera;
     Button mButtonUpdate;
     // XML
 
@@ -129,6 +130,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this,"Sumas faciles",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, Nivel1_Sumas_Faciles.class);
+                startActivity(intent);
+                finish();
+                mediaMusica.stop();
+                mediaMusica.release();
+            }
+        });
+
+        mButtonJugarCarrera =findViewById(R.id.btnJugarCarrera);
+        mButtonJugarCarrera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this,"Juego con operaciones aleatorias",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, JuegoAleatorio.class);
                 startActivity(intent);
                 finish();
                 mediaMusica.stop();
