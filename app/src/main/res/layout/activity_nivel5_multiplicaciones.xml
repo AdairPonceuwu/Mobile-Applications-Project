@@ -6,18 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/fondojuego"
     tools:context=".Nivel5_Multiplicaciones">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#1F2D6F">
+            android:background="@color/blue_gray">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center"
+                android:background="#95FFFFFF"
                 android:gravity="center">
 
                 <ImageView
@@ -150,7 +153,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:background="#95FFFFFF">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -164,6 +168,7 @@
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:hint="Aquí"
+                    android:textColorHint="@color/blue_gray"
                     android:gravity="center"
                     android:inputType="number"/>
 
@@ -171,7 +176,7 @@
                     android:id="@+id/btnRespuesta"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#36196A"
+                    android:backgroundTint="@color/blue"
                     android:onClick="Comparar"
                     android:text="Responder"
                     />

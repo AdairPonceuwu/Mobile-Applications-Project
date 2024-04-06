@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/fondojuego2"
     tools:context=".RegisterActivity">
 
 
@@ -13,54 +15,81 @@
         android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:gravity="center"
+        android:background="#95FFFFFF"
         android:orientation="vertical" >
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/ic_game"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ico_control"
+                />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:gravity=""
+                android:src="@drawable/ico_calculadora0"
+                />
+
+        </LinearLayout>
+
+
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="¿Tienes una cuenta? ¡Inicia Sesion!"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/white"
-            android:backgroundTint="@color/purple_200"/>
+            android:backgroundTint="@color/teal_700"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:text="Ó ¡Crea tu cuenta! "
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:layout_margin="8dp">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="3dp"
-                android:src="@drawable/ic_person"/>
+                android:src="@drawable/ico_usuario"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Nombre: "
-                android:textStyle="bold"
-                android:textSize="18sp" />
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/textName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre"
+                android:textColorHint="@color/blue_gray"
                 android:inputType="text"
                 />
 
@@ -70,21 +99,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:layout_margin="8dp">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="3dp"
-                android:src="@drawable/ic_email"/>
+                android:src="@drawable/ico_correo"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email: "
-                android:textStyle="bold"
-                android:textSize="18sp" />
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/textEmail"
@@ -92,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:hint="correo@gmail.com"
                 android:inputType="textEmailAddress"
+                android:textColorHint="@color/blue_gray"
                 />
 
         </LinearLayout>
@@ -99,28 +132,32 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:layout_margin="8dp">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="3dp"
-                android:src="@drawable/ic_password"/>
+                android:src="@drawable/ico_pass"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Contraseña: "
-                android:textStyle="bold"
-                android:textSize="18sp" />
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:textColorHint="@color/blue_gray"/>
 
 
         </LinearLayout>
@@ -129,8 +166,11 @@
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
             android:text="Registrar"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:backgroundTint="@color/teal_200"/>
 
         <TextView
             android:id="@+id/textFecha"
@@ -138,7 +178,7 @@
             android:layout_height="wrap_content"
             android:text="Fecha de registro"
             android:textSize="25sp"
-            android:textColor="@color/purple_200"
+            android:textColor="@color/black"
             android:textStyle="italic"/>
 
     </LinearLayout>

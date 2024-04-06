@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,13 @@ public class Nivel2_Sumas_Avanzadas extends AppCompatActivity {
 
     // Declaramos las variantes de las funcionalidades del juego final
 
+    // Musica del Juego
+    MediaPlayer mediaMusica;
+    MediaPlayer mediaAcierto;
+    MediaPlayer mediaFallo;
+    // Musica del Juego
+
+
     // Declaro xml inicio
     ImageView imagenVidas;
     TextView nombreJugador;
@@ -75,6 +83,14 @@ public class Nivel2_Sumas_Avanzadas extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Datos de mi juego");
+
+        // Musica del Juego
+        mediaMusica = MediaPlayer.create(this, R.raw.musica_menu);
+        mediaMusica.start();
+        mediaMusica.setLooping(true);
+        mediaAcierto = MediaPlayer.create(this, R.raw.aciertos_inicio);
+        mediaFallo = MediaPlayer.create(this, R.raw.resorte);
+        // Musica del Juego
 
 
         // instancio el xml inicio
@@ -150,11 +166,13 @@ public class Nivel2_Sumas_Avanzadas extends AppCompatActivity {
         if (!respuesta.equals("")){
             int respuesta_jugador = Integer.parseInt(respuesta);
             if(resultado == respuesta_jugador){
+                mediaAcierto.start();
                 score++;
                 puntajeJugador.setText(""+score);
                 textoDeRespuesta.setText("");
                 BaseDeDatos();
             }else{
+                mediaFallo.start();
                 vidas--;
                 BaseDeDatos();
                 switch (vidas){
@@ -176,6 +194,8 @@ public class Nivel2_Sumas_Avanzadas extends AppCompatActivity {
                         Intent intent = new Intent(this, MainActivity.class);
                         startActivity(intent);
                         finish();
+                        mediaMusica.stop();
+                        mediaMusica.release();
                         break;
                 }
                 textoDeRespuesta.setText("");
@@ -211,6 +231,8 @@ public class Nivel2_Sumas_Avanzadas extends AppCompatActivity {
 
             startActivity(intent);
             finish();
+            mediaMusica.stop();
+            mediaMusica.release();
         }
     }
 

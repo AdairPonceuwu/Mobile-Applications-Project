@@ -5,7 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,13 +39,21 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Firebase
     FirebaseUser mUser;
     FirebaseAuth mAuth;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    // Firebase
 
-    // Firebase Final
+    // Musica del Juego
+    MediaPlayer mediaMusica;
+    MediaPlayer mediaAcierto;
+    MediaPlayer mediaFallo;
+    // Musica del Juego
+
+    // XML
     TextView mTextName;
     TextView mTextEmail;
     TextView mTextFecha;
@@ -54,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     Button mButtonOut;
     Button mButtonJugar;
     Button mButtonUpdate;
-
+    // XML
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Datos de mi juego");
         // Firebase Final
+
+        // Musica del Juego
+        mediaMusica = MediaPlayer.create(this, R.raw.musica_niveles);
+        mediaMusica.start();
+        mediaMusica.setLooping(true);
+        // Musica del Juego
 
         // TEXTVIEW inicio
         mTextName=findViewById(R.id.textViewNombre);
@@ -115,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, Nivel1_Sumas_Faciles.class);
                 startActivity(intent);
                 finish();
+                mediaMusica.stop();
+                mediaMusica.release();
             }
         });
 

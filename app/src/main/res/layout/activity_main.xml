@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/fondojuego"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -14,19 +15,13 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:text="¿Cuanto sabes de matemáticas?"
-            android:gravity="center"
-            android:textStyle="bold"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
+
 
             <ImageView
                 android:layout_width="150dp"
@@ -38,13 +33,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#7EFFFFFF">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:text="¿Cuanto sabes de matemáticas?"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Identificador:"
+                    android:textColor="@color/black"
                     android:maxLines="1"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"/>
@@ -55,6 +61,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:text="Identificador"
+                    android:textColor="@color/black"
                     android:maxLines="1"
                     android:textStyle="bold"/>
 
@@ -63,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Nombre:"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
@@ -72,6 +80,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Nombre"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_marginTop="3dp"/>
 
@@ -80,6 +89,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Email:"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
@@ -89,6 +99,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Email"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_marginTop="3dp"/>
 
@@ -97,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Fecha de Registro:"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
@@ -106,6 +118,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Fecha de Registro"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_marginTop="3dp"/>
 
@@ -115,6 +128,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="Puntaje Maximo: 0"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
@@ -127,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:backgroundTint="@color/teal_700"
+            android:backgroundTint="@color/teal_500"
             android:text="¡Juega ahora mismo!"/>
 
         <LinearLayout
@@ -150,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/purple_500"
+                android:backgroundTint="@color/blue_gray"
                 android:text="Editar" />
 
             <Button
