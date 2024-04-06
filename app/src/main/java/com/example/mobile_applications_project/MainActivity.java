@@ -1,11 +1,13 @@
 package com.example.mobile_applications_project;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
+import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -13,7 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.window.OnBackInvokedDispatcher;
+import androidx.activity.OnBackPressedCallback;
 
 import androidx.activity.EdgeToEdge;
 
@@ -25,6 +28,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    DatabaseReference mDataBase;
     // Firebase
 
     // Musica del Juego
@@ -65,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
     Button mButtonJugar;
     Button mButtonJugarCarrera;
     Button mButtonUpdate;
+
+    LottieAnimationView animationView;
     // XML
 
     @Override
@@ -84,12 +91,11 @@ public class MainActivity extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Datos de mi juego");
+        mDataBase = firebaseDatabase.getReference("Temporada");
         // Firebase Final
 
         // Musica del Juego
         mediaMusica = MediaPlayer.create(this, R.raw.musica_niveles);
-        mediaMusica.start();
-        mediaMusica.setLooping(true);
         // Musica del Juego
 
         // TEXTVIEW inicio
@@ -99,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
         mTextIdentificador=findViewById(R.id.textViewUid);
         mTextViewPuntaje = findViewById(R.id.textViewPuntaje);
         // TEXTVIEW final
+
+        //View
+        animationView = findViewById(R.id.animationViewTemp);
+        //View
 
         // Aqui declaramos en el textview puntaje el score del jugador
         AdminSQLiteOpenHelper adminSQLiteOpenHelper = new AdminSQLiteOpenHelper(this,"BD",null,1);
@@ -162,6 +172,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
         UserInfo();
+        Temporada();
+    }
+
+    private void Temporada() {
+        mDataBase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.hasChild("primavera")){
+                    animationView.setAnimation(R.raw.animation_spring);
+                    animationView.playAnimation();
+                } else if (snapshot.hasChild("verano")) {
+                    animationView.setAnimation(R.raw.animation_summer);
+                    animationView.playAnimation();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     // Aqui actualizamos los datos del usuario inicio
@@ -253,6 +284,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Cerramos la sesion del usuario inicio
     private void CerrarSesion() {
+        mediaMusica.stop();
+        mediaMusica.release();
         mAuth.signOut();
         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
         Toast.makeText(MainActivity.this, "Sign Out",Toast.LENGTH_SHORT).show();
@@ -274,6 +307,8 @@ public class MainActivity extends AppCompatActivity {
     private void UsuarioLogeado() {
         if(mUser != null){
             Toast.makeText(MainActivity.this, "Online", Toast.LENGTH_SHORT).show();
+            mediaMusica.start();
+            mediaMusica.setLooping(true);
         }else{
             startActivity(new Intent(MainActivity.this, RegisterActivity.class));
             finish();
@@ -282,12 +317,16 @@ public class MainActivity extends AppCompatActivity {
     }
     //Metodo que comprueba si un usuario a iniciado sesion
 
-
+    @SuppressLint("MissingSuperCall")
     @Override
     public void onBackPressed() {
+        mediaMusica.stop();
+        mediaMusica.release();
         super.onBackPressed();
     }
 
 
 }
+
+
 

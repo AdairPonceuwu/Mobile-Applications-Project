@@ -22,19 +22,41 @@
             android:orientation="horizontal"
             >
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/principal"
-                android:layout_marginTop="15dp"/>
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationViewTemp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:lottie_rawRes="@raw/animation"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"/>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationView"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:lottie_rawRes="@raw/animation"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"/>
+
+            </LinearLayout>
+
+
+
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:background="#7EFFFFFF">
+                android:background="#95FFFFFF">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -50,10 +72,13 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Identificador:"
-                    android:textColor="@color/black"
+                    android:background="@color/black"
+                    android:textColor="@color/white"
+                    android:gravity="center"
                     android:maxLines="1"
                     android:textStyle="bold"
-                    android:layout_marginTop="5dp"/>
+                    android:layout_marginTop="5dp"
+                    />
 
                 <TextView
                     android:id="@+id/textViewUid"
@@ -63,14 +88,17 @@
                     android:text="Identificador"
                     android:textColor="@color/black"
                     android:maxLines="1"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:gravity="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Nombre:"
-                    android:textColor="@color/black"
+                    android:background="@color/black"
+                    android:textColor="@color/white"
+                    android:gravity="center"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
@@ -82,14 +110,17 @@
                     android:text="Nombre"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:layout_marginTop="3dp"/>
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Email:"
-                    android:textColor="@color/black"
+                    android:background="@color/black"
+                    android:textColor="@color/white"
+                    android:gravity="center"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
@@ -101,14 +132,17 @@
                     android:text="Email"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:layout_marginTop="3dp"/>
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="Fecha de Registro:"
-                    android:textColor="@color/black"
+                    android:background="@color/black"
+                    android:textColor="@color/white"
+                    android:gravity="center"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
@@ -120,7 +154,8 @@
                     android:text="Fecha de Registro"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:layout_marginTop="3dp"/>
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"/>
 
                 <TextView
                     android:id="@+id/textViewPuntaje"
@@ -128,9 +163,11 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="Puntaje Maximo: 0"
-                    android:textColor="@color/black"
+                    android:background="@color/black"
+                    android:textColor="@color/white"
+                    android:gravity="center"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -143,7 +180,8 @@
                     android:textSize="18sp"
                     android:text="Juega avanzando entre operaciones"
                     android:gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
+                    android:background="@color/black"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"/>
 
@@ -153,6 +191,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/teal_500"
+                    android:textColor="@color/white"
                     android:text="¡Juega ahora mismo!"/>
 
 
@@ -162,9 +201,10 @@
                     android:textSize="18sp"
                     android:text="Juega con operaciones de todo tipo "
                     android:gravity="center"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
+                    android:background="@color/black"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="1dp"/>
 
                 <Button
                     android:id="@+id/btnJugarCarrera"
@@ -172,6 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/teal_700"
+                    android:textColor="@color/white"
                     android:text="¡Juega el modo carrera!"/>
 
             </LinearLayout>
@@ -202,6 +243,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/blue_gray"
+                android:textColor="@color/white"
                 android:text="Editar" />
 
             <Button
@@ -210,6 +252,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="#E80505"
+                android:textColor="@color/white"
                 android:text="Cerrar Sesion" />
 
         </LinearLayout>

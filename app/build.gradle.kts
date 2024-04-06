@@ -63,6 +63,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.tooling)
+    debugImplementation(libs.ui.test.manifest)
 
 
     //noinspection UseTomlInstead
@@ -73,8 +77,11 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     //noinspection UseTomlInstead
     implementation("com.google.firebase:firebase-database")
-    androidTestImplementation(platform(libs.compose.bom))
-    androidTestImplementation(libs.ui.test.junit4)
-    debugImplementation(libs.ui.tooling)
-    debugImplementation(libs.ui.test.manifest)
+    //noinspection UseTomlInstead
+    implementation ("com.airbnb.android:lottie:3.4.0")
+
+
+
+
+
 }

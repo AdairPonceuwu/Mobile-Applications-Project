@@ -1,5 +1,6 @@
 package com.example.mobile_applications_project;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -86,6 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
+
             }
         });
 
@@ -179,4 +182,6 @@ public class RegisterActivity extends AppCompatActivity {
                 });
 
     }
+
+
 }

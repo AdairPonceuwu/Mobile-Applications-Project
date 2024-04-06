@@ -8,40 +8,57 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@drawable/ico_calculadora"
+        android:label="Juego Matematico"
+        android:roundIcon="@drawable/ico_calculadora"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApplicationsProject"
         tools:targetApi="31">
+        <!-- android:label="@string/app_name" -->
         <activity
             android:name=".JuegoAleatorio"
-            android:exported="false" />
+            android:label="Jugar Carrera"
+            android:screenOrientation="portrait"
+            android:exported="true" />
         <activity
             android:name=".Nivel6_Operaciones_Aleatorias"
-            android:exported="false" />
+            android:label="Nivel Operaciones Aleatorias"
+            android:screenOrientation="portrait"
+            android:exported="true" />
         <activity
             android:name=".Nivel5_Multiplicaciones"
-            android:exported="false" />
+            android:label="Nivel Multiplicaciones"
+            android:screenOrientation="portrait"
+            android:exported="true" />
         <activity
             android:name=".Nivel4_Sumas_y_Restas"
-            android:exported="false" />
+            android:label="Nivel Sumas y Restas"
+            android:screenOrientation="portrait"
+            android:exported="true" />
         <activity
             android:name=".Nivel3_Restas"
-            android:exported="false" />
+            android:label="Nivel Restas"
+            android:screenOrientation="portrait"
+            android:exported="true" />
         <activity
             android:name=".Nivel2_Sumas_Avanzadas"
-            android:exported="false" />
+            android:label="Nivel Sumas Avanzadas"
+            android:screenOrientation="portrait"
+            android:exported="true" />
         <activity
             android:name=".Nivel1_Sumas_Faciles"
-            android:exported="false"
-            android:label="Sumas fáciles" />
+            android:label="Nivel Sumas Faciles"
+            android:screenOrientation="portrait"
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:label="Iniciar Sesion"
             android:exported="true"
             android:parentActivityName=".RegisterActivity" />
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,7 +68,10 @@
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:exported="true" />
+            android:screenOrientation="portrait"
+            android:label="Seccion de Registro"
+            android:exported="true"
+            />
     </application>
 
 </manifest>
