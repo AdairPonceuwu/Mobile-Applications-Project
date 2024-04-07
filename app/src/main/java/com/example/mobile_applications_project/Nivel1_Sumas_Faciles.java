@@ -22,6 +22,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,12 +44,11 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
     // Declaramos las variantes de las funcionalidades del juego final
 
     // Declaro xml inicio
-    ImageView imagenVidas;
+
     TextView nombreJugador;
     TextView puntajeJugador;
-    ImageView imagenIzquierda;
-    ImageView imagenSigno;
-    ImageView imagenDerecha;
+
+
     EditText textoDeRespuesta;
     Button mButtonRespuesta;
     // Declaro xml final
@@ -64,6 +64,12 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
     MediaPlayer mediaFallo;
     // Musica del Juego
 
+    //View
+    LottieAnimationView imagenVidas;
+    LottieAnimationView imagenDerecha;
+    LottieAnimationView imagenIzquierda;
+    LottieAnimationView imagenSigno;
+    //View
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,14 +99,16 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
 
         // instancio el xml inicio
         imagenVidas = findViewById(R.id.imageVidas);
-        nombreJugador = findViewById(R.id.textViewUsuario);
-        puntajeJugador = findViewById(R.id.textViewPuntos);
         imagenIzquierda = findViewById(R.id.imageViewNumeroUno);
         imagenDerecha = findViewById(R.id.imageViewNumeroDos);
         imagenSigno = findViewById(R.id.imageViewSigno);
+
+        nombreJugador = findViewById(R.id.textViewUsuario);
+        puntajeJugador = findViewById(R.id.textViewPuntos);
         textoDeRespuesta = findViewById(R.id.editTextResponder);
         mButtonRespuesta = findViewById(R.id.btnRespuesta);
         // instancio xml final
+
 
 
         informacionDelJugador();
@@ -153,17 +161,20 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
                 BaseDeDatos();
                 switch (vidas){
                     case 3:
-                        imagenVidas.setImageResource(R.drawable.vida3);
+                        imagenVidas.setAnimation(R.raw.tres);
+                        imagenVidas.playAnimation();
                        break;
 
                     case 2:
                         Toast.makeText(Nivel1_Sumas_Faciles.this, "Te quedan dos vidas", Toast.LENGTH_SHORT).show();
-                        imagenVidas.setImageResource(R.drawable.vida2);
+                        imagenVidas.setAnimation(R.raw.dos);
+                        imagenVidas.playAnimation();
                         break;
 
                     case 1:
                         Toast.makeText(Nivel1_Sumas_Faciles.this, "Te quedan una vida", Toast.LENGTH_SHORT).show();
-                        imagenVidas.setImageResource(R.drawable.vida1);
+                        imagenVidas.setAnimation(R.raw.uno);
+                        imagenVidas.playAnimation();
                         break;
                     case 0:
                         Toast.makeText(Nivel1_Sumas_Faciles.this, "Has perdido todas tus vidas", Toast.LENGTH_SHORT).show();
@@ -191,11 +202,13 @@ public class Nivel1_Sumas_Faciles extends AppCompatActivity {
 
             if (resultado <= 10){
                 for(int i =0;i< numero.length;i++){
-                    int id = getResources().getIdentifier(numero[i],"drawable",getPackageName());
+                    int id = getResources().getIdentifier(numero[i],"raw",getPackageName());
                     if(numAleatorio_uno == i){
-                        imagenIzquierda.setImageResource(id);
+                        imagenIzquierda.setAnimation(id);
+                        imagenIzquierda.playAnimation();
                     }if(numAleatorio_dos == i){
-                        imagenDerecha.setImageResource(id);
+                        imagenDerecha.setAnimation(id);
+                        imagenDerecha.playAnimation();
                     }
                 }
             }else{

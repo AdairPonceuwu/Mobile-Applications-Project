@@ -21,6 +21,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -49,12 +50,9 @@ public class Nivel6_Operaciones_Aleatorias extends AppCompatActivity {
 
 
     // Declaro xml inicio
-    ImageView imagenVidas;
+
     TextView nombreJugador;
     TextView puntajeJugador;
-    ImageView imagenIzquierda;
-    ImageView imagenSigno;
-    ImageView imagenDerecha;
     EditText textoDeRespuesta;
     Button mButtonRespuesta;
     // Declaro xml final
@@ -63,6 +61,13 @@ public class Nivel6_Operaciones_Aleatorias extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+
+    //View
+    LottieAnimationView imagenVidas;
+    LottieAnimationView imagenDerecha;
+    LottieAnimationView imagenIzquierda;
+    LottieAnimationView imagenSigno;
+    //View
 
 
     @Override
@@ -94,11 +99,12 @@ public class Nivel6_Operaciones_Aleatorias extends AppCompatActivity {
 
         // instancio el xml inicio
         imagenVidas = findViewById(R.id.imageVidas);
-        nombreJugador = findViewById(R.id.textViewUsuario);
-        puntajeJugador = findViewById(R.id.textViewPuntos);
         imagenIzquierda = findViewById(R.id.imageViewNumeroUno);
         imagenDerecha = findViewById(R.id.imageViewNumeroDos);
         imagenSigno = findViewById(R.id.imageViewSigno);
+
+        nombreJugador = findViewById(R.id.textViewUsuario);
+        puntajeJugador = findViewById(R.id.textViewPuntos);
         textoDeRespuesta = findViewById(R.id.editTextResponder);
         mButtonRespuesta = findViewById(R.id.btnRespuesta);
         // instancio xml final
@@ -113,11 +119,14 @@ public class Nivel6_Operaciones_Aleatorias extends AppCompatActivity {
         string_vidas = getIntent().getStringExtra("vidas");
         vidas = Integer.parseInt(string_vidas);
         if(vidas == 3){
-            imagenVidas.setImageResource(R.drawable.vida3);
+            imagenVidas.setAnimation(R.raw.tres);
+            imagenVidas.playAnimation();
         }if(vidas == 2){
-            imagenVidas.setImageResource(R.drawable.vida2);
+            imagenVidas.setAnimation(R.raw.dos);
+            imagenVidas.playAnimation();
         }if(vidas == 1){
-            imagenVidas.setImageResource(R.drawable.vida1);
+            imagenVidas.setAnimation(R.raw.uno);
+            imagenVidas.playAnimation();
         }
         //vidas final
 
@@ -176,17 +185,20 @@ public class Nivel6_Operaciones_Aleatorias extends AppCompatActivity {
                 BaseDeDatos();
                 switch (vidas){
                     case 3:
-                        imagenVidas.setImageResource(R.drawable.vida3);
+                        imagenVidas.setAnimation(R.raw.tres);
+                        imagenVidas.playAnimation();
                         break;
 
                     case 2:
                         Toast.makeText(Nivel6_Operaciones_Aleatorias.this, "Te quedan dos vidas", Toast.LENGTH_SHORT).show();
-                        imagenVidas.setImageResource(R.drawable.vida2);
+                        imagenVidas.setAnimation(R.raw.dos);
+                        imagenVidas.playAnimation();
                         break;
 
                     case 1:
                         Toast.makeText(Nivel6_Operaciones_Aleatorias.this, "Te quedan una vida", Toast.LENGTH_SHORT).show();
-                        imagenVidas.setImageResource(R.drawable.vida1);
+                        imagenVidas.setAnimation(R.raw.uno);
+                        imagenVidas.playAnimation();
                         break;
                     case 0:
                         Toast.makeText(Nivel6_Operaciones_Aleatorias.this, "Has perdido todas tus vidas", Toast.LENGTH_SHORT).show();
@@ -213,23 +225,28 @@ public class Nivel6_Operaciones_Aleatorias extends AppCompatActivity {
 
             if(numAleatorio_uno >= 0 && numAleatorio_uno <= 3){
                 resultado = numAleatorio_uno + numAleatorio_dos;
-                imagenSigno.setImageResource(R.drawable.suma);
+                imagenSigno.setAnimation(R.raw.suma);
+                imagenSigno.playAnimation();
             } else if(numAleatorio_uno >= 4 && numAleatorio_uno <= 7) {
                 resultado = numAleatorio_uno - numAleatorio_dos;
-                imagenSigno.setImageResource(R.drawable.resta);
+                imagenSigno.setAnimation(R.raw.resta);
+                imagenSigno.playAnimation();
             } else {
                 resultado = numAleatorio_uno * numAleatorio_dos;
-                imagenSigno.setImageResource(R.drawable.multiplicacion);
+                imagenSigno.setAnimation(R.raw.multiplicacion);
+                imagenSigno.playAnimation();
             }
 
             if(resultado >= 0){
 
                 for (int i = 0; i < numero.length; i++){
-                    int id = getResources().getIdentifier(numero[i], "drawable", getPackageName());
+                    int id = getResources().getIdentifier(numero[i], "raw", getPackageName());
                     if(numAleatorio_uno == i){
-                        imagenIzquierda.setImageResource(id);
+                        imagenIzquierda.setAnimation(id);
+                        imagenIzquierda.playAnimation();
                     }if(numAleatorio_dos == i){
-                        imagenDerecha.setImageResource(id);
+                        imagenDerecha.setAnimation(id);
+                        imagenDerecha.playAnimation();
                     }
                 }
 
