@@ -27,16 +27,28 @@
             app:lottie_autoPlay="true"
             app:lottie_loop="true"/>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="¿Tienes una cuenta? ¡Inicia Sesion!"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/teal_700"/>
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/sign_in_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Tienes una cuenta? ¡Inicia Sesion!"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/teal_700"/>
+
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"

@@ -287,6 +287,7 @@ public class MainActivity extends AppCompatActivity {
         mediaMusica.stop();
         mediaMusica.release();
         mAuth.signOut();
+        FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
         Toast.makeText(MainActivity.this, "Sign Out",Toast.LENGTH_SHORT).show();
     }
