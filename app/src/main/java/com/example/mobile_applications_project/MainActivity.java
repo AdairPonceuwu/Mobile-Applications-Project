@@ -298,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Eliminamos el usuario de la BD de Firebase
     private void EliminarUser() {
-        // Detener y liberar cualquier recurso de media que esté en uso (no relacionado con eliminar el usuario)
+        // Detener la musica
         mediaMusica.stop();
         mediaMusica.release();
 
@@ -316,15 +316,15 @@ public class MainActivity extends AppCompatActivity {
                                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Datos de mi juego").child(user.getUid());
                                 userRef.removeValue();
 
-                                // Sign out del usuario (no es necesario si el usuario ya ha sido eliminado)
+                                // Sign out del usuario
                                 FirebaseAuth.getInstance().signOut();
 
-                                // Redirigir a la pantalla de registro u otra pantalla necesaria
+                                // Redirigir a la pantalla del registro, ya que fue eliminado el usuario
                                 startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-                                Toast.makeText(MainActivity.this, "User deleted successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Usuario eliminado", Toast.LENGTH_SHORT).show();
                             } else {
                                 // Si no se pudo eliminar el usuario, mostrar un mensaje de error
-                                Toast.makeText(MainActivity.this, "Failed to delete user", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Falla al eliminar", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
