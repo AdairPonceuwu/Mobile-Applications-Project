@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Instanciamos el click del boton para elimibar el usuario
+        //Instanciamos el click del boton para eliminar el usuario
         mButtonDelete = findViewById(R.id.btnEliminacion);
 
         mButtonDelete.setOnClickListener(new View.OnClickListener() {
@@ -211,19 +211,24 @@ public class MainActivity extends AppCompatActivity {
 
     // Aqui actualizamos los datos del usuario inicio
     private void updateInfo() {
-        String [] opciones = {"Nombre"};
+        String[] opciones = {"Nombre", "Contraseña"};
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setItems(opciones, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if(i==0){
                     UpdateName("Nombre");
+                }  else if (i == 1) {
+                    updatePassword("Contraseña");
                 }
             }
+
         });
         builder.create().show();
     }
+    
     // Aqui actualizamos los datos del usuario final
+
     private void UpdateName(final String key) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Editar el " + key);
@@ -257,6 +262,42 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
+
+    private void updatePassword(final String key) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Editar la " + key);
+        LinearLayoutCompat linearLayoutCompat = new LinearLayoutCompat(MainActivity.this);
+        linearLayoutCompat.setOrientation(LinearLayoutCompat.VERTICAL);
+        linearLayoutCompat.setPadding(10,10,10,10);
+        final EditText editText = new EditText(MainActivity.this);
+        editText.setHint("Ingrese su nueva " + key);
+        linearLayoutCompat.addView(editText);
+        builder.setView(linearLayoutCompat);
+        // Esto saldra si el usuario hace click en actualizar info
+        builder.setPositiveButton("Actualizar informacion", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String value = editText.getText().toString().trim();
+                HashMap<String,Object> result = new HashMap<>();
+                result.put(key,value);
+                databaseReference.child(mAuth.getUid()).updateChildren(result).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(MainActivity.this, "La contraseña se actualizó correctamente", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(MainActivity.this, "Ha cancelado la edicion del perfil", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.create().show();
+    }
+
+
 
     // Vemos los datos del usuario Logueado inicio
     private void UserInfo(){
