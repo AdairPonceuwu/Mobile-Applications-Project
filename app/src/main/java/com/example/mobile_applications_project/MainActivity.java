@@ -115,19 +115,49 @@ public class MainActivity extends AppCompatActivity {
         animationView = findViewById(R.id.animationViewTemp);
         //View
 
-        // Aqui declaramos en el textview puntaje el score del jugador
-        AdminSQLiteOpenHelper adminSQLiteOpenHelper = new AdminSQLiteOpenHelper(this,"BD",null,1);
-        SQLiteDatabase BD = adminSQLiteOpenHelper.getWritableDatabase();
+        //FirebaseAuth
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        Cursor consulta = BD.rawQuery("select * from puntaje where score = (select max(score) from puntaje)",null);
-        if(consulta.moveToFirst()){
-            String temp_nombre = consulta.getString(0);
-            String temp_score = consulta.getString(1);
-            mTextViewPuntaje.setText("Puntaje Maximo: " + temp_score);
-            BD.close();
-        }else{
-            BD.close();
+        // Verificar si el usuario está autenticado
+        if (user != null) {
+            String uidString = user.getUid();
+
+            //puntaje máximo del jugador de SQLite
+            AdminSQLiteOpenHelper adminSQLiteOpenHelper = new AdminSQLiteOpenHelper(this, "BD", null, 1);
+            SQLiteDatabase BD = adminSQLiteOpenHelper.getWritableDatabase();
+
+            Cursor consulta = BD.rawQuery("select * from puntaje", null);
+
+            if (consulta.moveToFirst()) {
+                String temp_nombre = consulta.getString(0);
+                String temp_score = consulta.getString(1);
+                mTextViewPuntaje.setText("Puntaje Maximo: " + temp_score);
+
+                // Almacenar el puntaje en Firebase
+                FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference mReference = mDatabase.getReference("Datos de mi juego");
+
+                // Actualiza el nuevo puntaje
+                mReference.child(uidString).child("Puntaje").setValue(temp_score)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // Datos actualizados con cada juego
+                                Toast.makeText(MainActivity.this, "Puntaje actualizado", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+                BD.close();
+            } else {
+                BD.close();
+            }
+        } else {
+            // No hay usuario autenticado
+            Toast.makeText(MainActivity.this, "No se encontró ningún usuario autenticado", Toast.LENGTH_SHORT).show();
         }
+
+
 
 
 
@@ -380,6 +410,10 @@ public class MainActivity extends AppCompatActivity {
     private void CerrarSesion() {
         mediaMusica.stop();
         mediaMusica.release();
+        AdminSQLiteOpenHelper adminSQLiteOpenHelper = new AdminSQLiteOpenHelper(this,"BD", null,1);
+        SQLiteDatabase BD = adminSQLiteOpenHelper.getWritableDatabase();
+        BD.delete("puntaje", null, null);
+        BD.close();
         mAuth.signOut();
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
