@@ -246,6 +246,16 @@
                 android:textColor="@color/white"
                 android:text="Editar" />
 
+
+            <Button
+                android:id="@+id/btnEliminacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/purple_200"
+                android:textColor="@color/white"
+                android:text="Eliminar" />
+
             <Button
                 android:id="@+id/btnCerrarSesion"
                 android:layout_width="wrap_content"

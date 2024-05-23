@@ -41,6 +41,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
+
 public class MainActivity extends AppCompatActivity {
 
     // Firebase
@@ -65,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
     TextView mTextIdentificador;
     TextView mTextViewPuntaje;
 
-
+    //Botones
     Button mButtonOut;
+    Button mButtonDelete;
     Button mButtonJugar;
     Button mButtonJugarCarrera;
     Button mButtonUpdate;
@@ -160,6 +165,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Instanciamos el click del boton para elimibar el usuario
+        mButtonDelete = findViewById(R.id.btnEliminacion);
+
+        mButtonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EliminarUser();
+            }
+        });
 
 
         mButtonOut = findViewById(R.id.btnCerrarSesion);
@@ -280,6 +294,45 @@ public class MainActivity extends AppCompatActivity {
 
     // Vemos los datos del usuario Logueado final
 
+
+
+    //Eliminamos el usuario de la BD de Firebase
+    private void EliminarUser() {
+        // Detener y liberar cualquier recurso de media que esté en uso (no relacionado con eliminar el usuario)
+        mediaMusica.stop();
+        mediaMusica.release();
+
+        // Obtener una referencia al usuario actualmente autenticado
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        // Verificar si el usuario está autenticado
+        if (user != null) {
+            // Eliminar el usuario de Firebase Authentication
+            user.delete()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                // Eliminar los datos del usuario de la base de datos de Firebase
+                                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Datos de mi juego").child(user.getUid());
+                                userRef.removeValue();
+
+                                // Sign out del usuario (no es necesario si el usuario ya ha sido eliminado)
+                                FirebaseAuth.getInstance().signOut();
+
+                                // Redirigir a la pantalla de registro u otra pantalla necesaria
+                                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                                Toast.makeText(MainActivity.this, "User deleted successfully", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // Si no se pudo eliminar el usuario, mostrar un mensaje de error
+                                Toast.makeText(MainActivity.this, "Failed to delete user", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        } else {
+            // Si el usuario no está autenticado, simplemente redirige a la pantalla de registro
+            startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+        }
+    }
 
 
     //Cerramos la sesion del usuario inicio
